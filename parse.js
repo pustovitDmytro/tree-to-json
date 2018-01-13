@@ -8,11 +8,12 @@ const rl = readline.createInterface({
 rl.on('line', (input) => {
     const reStucture = /^(\W+)\s/g;
     const reIsLast = /└/g;
-    const reHasChild = /┬/g;
-    const reIsSimple = /─$/g;
-    const structure = reStart.exec(input)[1] || '';
-    const isLast = structure.test(reIsLast);
-    const isSimple = structure.tets(reIsSimple);
-    const hasChild = structure.test(reHasChild);
+    const reHasChild = /┬\s/g;
+    const reIsSimple = /─\s/g;
+    const [ structure ] = input.match(reStucture) || ['┬'];
+    // console.log('structure', structure);
+    const isLast = !!~structure.search(reIsLast);
+    const isSimple = !!~structure.search(reIsSimple);
+    const hasChild = !!~structure.search(reHasChild);
     console.log(`-> ${structure}`, {isLast, isSimple, hasChild});
 });

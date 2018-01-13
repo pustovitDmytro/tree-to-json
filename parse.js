@@ -36,7 +36,7 @@ rl.on('line', (input) => {
     // console.log({isLast, isSimple, hasChild, moduleName, version});
     var obj = { id: i, parent_id: parent, name: moduleName, children: [] };
 
-    if (hasChild) parent = i++;
+    if (hasChild) parent = i;
     lookup[obj.id] = obj;
 
     if (lookup[obj.parent_id]) {
@@ -44,5 +44,8 @@ rl.on('line', (input) => {
     } else {
         tree.push(obj);
     }
+
+    console.log(i, moduleName);
+    i++;
+    if(i==22) console.log(JSON.stringify(tree));
 });
-console.log(tree);

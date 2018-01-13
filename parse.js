@@ -4,10 +4,13 @@ const rl = readline.createInterface({
     input : process.stdin,
     output: process.stdout
 });
-var tree = [];
+var tree = {};
 var lookup = {};
 let i = 1;
-let parent = 'top';
+let parent = 0;
+
+const omit = ({children, version}) => ({children, version});
+
 rl.on('line', (input) => {
     const reStucture = /^(\W+)\s/g;
     const reIsLast = /└/g;
@@ -23,7 +26,7 @@ rl.on('line', (input) => {
     const isLast = !!~structure.search(reIsLast);
     const isSimple = !!~structure.search(reIsSimple);
     const hasChild = !!~structure.search(reHasChild);
-    const [, moduleName, version] = reModule.exec(input)||['', 'root', ''];
+    let [, moduleName, version] = reModule.exec(input)||['', 'root', ''];
 
     // const element = {version};
     // map[moduleName] = {link: element};
@@ -34,18 +37,19 @@ rl.on('line', (input) => {
     //
     // if (isLast) root = parent;
     // console.log({isLast, isSimple, hasChild, moduleName, version});
-    var obj = { id: i, parent_id: parent, name: moduleName, children: [] };
+    var obj = { id: i, parent_id: parent, name: moduleName, children: {}, version };
 
     if (hasChild) parent = i;
     lookup[obj.id] = obj;
 
     if (lookup[obj.parent_id]) {
-        lookup[obj.parent_id].children.push(obj);
+        lookup[obj.parent_id].children[obj.name] = omit(obj);
     } else {
-        tree.push(obj);
+        tree[obj.name] = omit(obj);
     }
 
-    console.log(i, moduleName);
+    // console.log(i, moduleName);
+    // console.log(omit(obj));
     i++;
     if(i==22) console.log(JSON.stringify(tree));
 });

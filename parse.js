@@ -1,13 +1,18 @@
 const readline = require('readline');
 
 const rl = readline.createInterface({
-    input: process.stdin,
+    input : process.stdin,
     output: process.stdout
 });
 
 rl.on('line', (input) => {
-    const reStart = /^(\W)+\s/g;
-    let symbol = reStart.exec(input);
-    symbol = symbol || ' ';
-    console.log(`Received: ${symbol[1]}`);
+    const reStucture = /^(\W+)\s/g;
+    const reIsLast = /└/g;
+    const reHasChild = /┬/g;
+    const reIsSimple = /─$/g;
+    const structure = reStart.exec(input)[1] || '';
+    const isLast = structure.test(reIsLast);
+    const isSimple = structure.tets(reIsSimple);
+    const hasChild = structure.test(reHasChild);
+    console.log(`-> ${structure}`, {isLast, isSimple, hasChild});
 });

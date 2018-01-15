@@ -9,7 +9,7 @@
     "parse": "babel-node src/parse.js",
     "mocha": "mocha --require babel-core/register --timeout 600000 --reporter spec --ui qunit test.js"
   },
-  "author": "Webbylab",
+  "author": "pustovit",
   "license": "ISC",
   "devDependencies": {
     "babel-cli": "^6.26.0",

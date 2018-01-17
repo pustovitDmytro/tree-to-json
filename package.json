@@ -7,7 +7,7 @@
     "lint": "eslint lib --ext js",
     "lint:fix": "eslint lib --ext js --fix",
     "build": "babel src --out-dir lib",
-    "mocha": "mocha --require babel-core/register --timeout 600000 --reporter spec --ui qunit test.js"
+    "mocha": "mocha --require babel-core/register --timeout 600000 --reporter spec --ui qunit test/*.js"
   },
   "author": "pustovit",
   "license": "ISC",

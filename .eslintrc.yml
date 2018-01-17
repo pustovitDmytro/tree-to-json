@@ -1,21 +1,13 @@
 parser: "babel-eslint"
 env:
-    browser: true
     commonjs: true
     node: true
     es6: true
-    webextensions: true
 
 parserOptions:
     ecmaVersion: 6
     sourceType: module
-    ecmaFeatures:
-        jsx: true
 
-plugins:
-    - react
-extends:
-    - plugin:react/recommended
 rules:
 
     # Possible Errors

@@ -2,11 +2,11 @@
   "name": "tree-to-json",
   "version": "0.0.1",
   "description": "",
-  "main": "src/index.js",
+  "main": "lib/index.js",
   "scripts": {
     "lint": "eslint lib --ext js",
     "lint:fix": "eslint lib --ext js --fix",
-    "parse": "babel-node src/parse.js",
+    "build": "babel src --out-dir lib",
     "mocha": "mocha --require babel-core/register --timeout 600000 --reporter spec --ui qunit test.js"
   },
   "author": "pustovit",
@@ -16,6 +16,7 @@
     "babel-core": "^6.26.0",
     "babel-eslint": "^8.0.2",
     "babel-plugin-transform-async-to-generator": "^6.24.1",
+    "babel-preset-env": "^1.6.1",
     "babel-preset-node6": "^11.0.0",
     "chai": "^4.1.2",
     "eslint": "^4.11.0",

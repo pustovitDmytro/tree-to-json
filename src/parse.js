@@ -5,11 +5,11 @@ module.exports = ({
     output= process.stdout
 }) => {
     const rl = readline.createInterface({ input, output });
+    console.log("input", input.path);
     const tree = {};
     const lookup = {};
     let i = 1;
     let parent = 0;
-
     const omit = ({ children, version }) => ({ children, version });
 
     rl.on('line', (input) => {

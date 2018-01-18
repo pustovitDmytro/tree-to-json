@@ -11,7 +11,9 @@ const output = fs.createWriteStream(outputPath);
 const parse = require("../src/parse.js");
 suite('VALID JSON');
 
-test('Short list', async () => {
+test('Short File', async () => {
     parse({ input, output });
+    console.log("require")
+    const json = require(outputPath);
     // assert.equal(parent, 'img', 'images must be in img directory');
 });

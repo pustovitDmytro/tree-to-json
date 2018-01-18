@@ -4,15 +4,14 @@ module.exports = ({
     input = process.stdin,
     output= process.stdout
 }) => {
-    const rl = readline.createInterface({ input, output });
-    console.log("input", input.path);
+    const rl = readline.createInterface({ input, output, terminal:false });
     const tree = {};
     const lookup = {};
     let i = 1;
     let parent = 0;
     const omit = ({ children, version }) => ({ children, version });
 
-    rl.on('line', (input) => {
+    rl.on('line', input => {
         const reStucture = /^(\W+)\s/g;
         const reIsLast = /└/g;
         const reHasChild = /┬/g;
@@ -44,6 +43,7 @@ module.exports = ({
     });
 
     rl.on('close', () => {
-        console.log(JSON.stringify(tree))
+        console.log("done")
+        rl.output.write(JSON.stringify(tree));
     });
 };

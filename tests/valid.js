@@ -6,7 +6,7 @@ const path = require('path');
 const inputPath = path.resolve(__dirname, 'short.list');
 const outputPath = path.resolve(__dirname, 'tmp/short.json');
 
-const input = fs.createReadStream('short.list');
+const input = fs.createReadStream(inputPath);
 const output = fs.createWriteStream(outputPath);
 const parse = require("../src/parse.js");
 suite('VALID JSON');

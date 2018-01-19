@@ -1,0 +1,21 @@
+tree-to-json@0.0.1 /mnt/e/work/code/js/tree-to-json
+└─┬ babel-cli@6.26.0
+  ├── babel-core@6.26.0 deduped
+  ├─┬ babel-polyfill@6.26.0
+  │ ├── babel-runtime@6.26.0 deduped
+  │ ├── core-js@2.5.3
+  │ └── regenerator-runtime@0.10.5
+  ├─┬ babel-register@6.26.0
+  │ ├── babel-core@6.26.0 deduped
+  │ ├── babel-runtime@6.26.0 deduped
+  │ ├── core-js@2.5.3 deduped
+  │ ├─┬ home-or-tmp@2.0.0
+  │ │ ├── os-homedir@1.0.2
+  │ │ └── os-tmpdir@1.0.2
+  │ ├── lodash@4.17.4 deduped
+  │ ├── mkdirp@0.5.1 deduped
+  │ └─┬ source-map-support@0.4.18
+  │   └── source-map@0.5.7 deduped
+  └─┬ babel-runtime@6.26.0
+    ├── core-js@2.5.3 deduped
+    └── regenerator-runtime@0.11.1

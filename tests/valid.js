@@ -8,12 +8,15 @@ const outputPath = path.resolve(__dirname, 'tmp/short.json');
 
 const input = fs.createReadStream(inputPath);
 const output = fs.createWriteStream(outputPath);
-const parse = require("../src/parse.js");
+const { parseAsync, parse } = require("../src/index.js");
+
 suite('VALID JSON');
 
 test('Short File', async () => {
-    parse({ input, output });
-    console.log("require")
+    await parseAsync({ input, output });
     const json = require(outputPath);
-    // assert.equal(parent, 'img', 'images must be in img directory');
+});
+
+test('Short File: nodeback', () => {
+    parse({ input, output }, (err, done) => JSON.parse(JSON.stringify(done)));
 });

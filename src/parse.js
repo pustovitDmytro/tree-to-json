@@ -3,7 +3,7 @@ const readline = require('readline');
 module.exports = ({
     input = process.stdin,
     output= process.stdout
-}) => {
+}, callback) => {
     const rl = readline.createInterface({ input, output, terminal:false });
     const tree = {};
     const lookup = {};
@@ -43,7 +43,7 @@ module.exports = ({
     });
 
     rl.on('close', () => {
-        console.log("done")
         rl.output.write(JSON.stringify(tree));
+        callback(null, tree);
     });
 };

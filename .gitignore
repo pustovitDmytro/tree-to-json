@@ -1,6 +1,4 @@
 node_modules
 *.log
-*.list
+tests/tmp
 lib
-out.json
-tmp

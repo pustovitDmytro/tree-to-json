@@ -20,9 +20,9 @@ module.exports = ({
         // const bundle = {};
         const reModule = /\s*([^\s]+)@([^\s]+)/g;
         const [, structure] = reStucture.exec(input) || ['', '┬'];
-        // const isLast = Boolean(~structure.search(reIsLast));
-        // const isSimple = Boolean(~structure.search(reIsSimple));
-        const hasChild = Boolean(~structure.search(reHasChild));
+        // const isLast = ~structure.search(reIsLast);
+        // const isSimple = ~structure.search(reIsSimple);
+        const hasChild = ~structure.search(reHasChild);
         const [, moduleName, version] = reModule.exec(input)||['', 'root', ''];
 
         const obj = { id: i, parentId: parent, name: moduleName, children: {}, version };

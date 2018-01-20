@@ -6,7 +6,7 @@ module.exports = param => {
             if(err !== null) {
                 return reject(err);
             }
-            resolve(data);
+            return resolve(data);
         });
     });
 };

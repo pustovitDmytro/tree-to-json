@@ -25,11 +25,7 @@ module.exports = ({
         const hasChild = ~structure.search(reHasChild);
         const [, moduleName, version] = reModule.exec(input)||['', 'root', ''];
 
-        const obj = { id: i, parentId: parent, name: moduleName, children: {}, version };
-        console.log(obj)
-        if (hasChild) {
-            parent = i;
-        }
+        const obj = { id: i, parentId: parent, name: moduleName, children: {}, version, hasChild, isLast };
         lookup[obj.id] = obj;
 
         if (lookup[obj.parentId]) {
@@ -38,9 +34,14 @@ module.exports = ({
             tree[obj.name] = omit(obj);
         }
 
-        if (isLast){
-            console.log("isLast", obj.id, lookup[obj.parentId].name);
-            // parent = lookup[obj.parentId]?lookup[obj.parentId].parentId: -1;
+        if (hasChild) {
+            parent = i;
+        } else if (isLast){
+            let index = obj.parentId;
+            while(lookup[index].isLast){
+                index = lookup[index].parentId;
+            }
+            parent = lookup[index].parentId;
         }
 
         i++;

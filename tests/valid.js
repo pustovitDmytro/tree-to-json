@@ -2,39 +2,35 @@ require('babel-polyfill');
 const fs = require('fs');
 import { assert } from 'chai';
 const path = require('path');
-const { parseAsync } = require("../lib/index.js");
+const { parseAsync, parse } = require("../lib/index.js");
 
-const inputPath = path.resolve(__dirname, 'lists/short.list');
-const outputPath = path.resolve(__dirname, 'tmp/short_.json');
-const input = fs.createReadStream(inputPath);
-const output = fs.createWriteStream(outputPath);
+suite('VALID JSON');
 
-parseAsync({ input, output }).then(payload => {
-    const json = payload;
-    const root = json["tree-to-json"];
+test('Positive: Short File', async () => {
+    const inputPath = path.resolve(__dirname, 'lists/short.list');
+    const outputPath = path.resolve(__dirname, 'tmp/short.json');
+    const input = fs.createReadStream(inputPath);
+    const output = fs.createWriteStream(outputPath);
 
-    suite('CHILDREN');
+    await parseAsync({ input, output });
+    require(outputPath);
+});
 
-    test('Root childs', () => {
-        assert.exists(root, 'root exist');
-        assert.exists(root.children, 'root has childrens');
-        const children = Object.keys(root.children);
-        assert.lengthOf(children, 1, "test root has only 1 child")
-    });
+test('Positive: Short File: nodeback', () => {
+    const inputPath = path.resolve(__dirname, 'lists/short.list');
+    const outputPath = path.resolve(__dirname, 'tmp/short.json');
+    const input = fs.createReadStream(inputPath);
+    const output = fs.createWriteStream(outputPath);
 
-    test('BabelCli only keys', () => {
-        const babelCli = root.children["babel-cli"];
-        assert.hasAllKeys(babelCli.children, ["babel-polyfill", "babel-core", "babel-register", "babel-runtime"])
-    });
+    parse({ input, output }, (err, done) => JSON.parse(JSON.stringify(done)));
+});
 
-    test('DeepChilds Exist', async () => {
-        const level1 = root.children["babel-cli"];
-        assert.isObject(level1, "babel-cli");
-        const level21 = level1.children["babel-polyfill"];
-        const level22 = level1.children["babel-register"];
-        const level23 = level1.children["babel-runtime"];
-        assert.isObject(level21, "babel-cli > babel-polyfill");
-        assert.isObject(level22, "babel-cli > babel-register");
-        assert.isObject(level23, "babel-cli > babel-runtime");
-    });
+test('Positive: Long File: Async', async () => {
+    const inputPath = path.resolve(__dirname, 'lists/long.list');
+    const outputPath = path.resolve(__dirname, 'tmp/long.json');
+    const input = fs.createReadStream(inputPath);
+    const output = fs.createWriteStream(outputPath);
+
+    await parseAsync({ input, output });
+    require(outputPath);
 });

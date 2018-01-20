@@ -26,7 +26,7 @@ module.exports = ({
         const [, moduleName, version] = reModule.exec(input)||['', 'root', ''];
 
         const obj = { id: i, parentId: parent, name: moduleName, children: {}, version };
-
+        rl.output.write(obj);
         if (hasChild) {
             parent = i;
         }

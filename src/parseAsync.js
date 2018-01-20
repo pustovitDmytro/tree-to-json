@@ -1,4 +1,4 @@
-import parse from './parse.js';
+const parse = require('./parse.js');
 
 module.exports = param => {
     return new Promise((resolve, reject) => {

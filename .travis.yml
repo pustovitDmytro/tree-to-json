@@ -9,5 +9,8 @@ jobs:
     - stage: test
       script: "npm run lint"
       script: "npm run mocha"
-    # - stage: deploy
-      # script: ./deploy
+notifications:
+  email:
+    recipients: dipustovit@gmail.com
+    on_success: change
+    on_failure: always

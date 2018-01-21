@@ -8,7 +8,4 @@ if (fs.existsSync(dir)){
 }
 fs.mkdirSync(dir);
 
-const { execSync } = require('child_process');
-execSync('npm run build');
-
 require('./tests');

@@ -2,11 +2,12 @@
   "name": "tree-to-json",
   "version": "0.0.1",
   "description": "",
-  "main": "lib/index.js",
+  "main": "./lib/index.js",
   "scripts": {
     "lint": "eslint src --ext js",
     "lint:fix": "eslint src --ext js --fix",
     "build": "babel src --out-dir lib",
+    "prepublish": "npm run build",
     "test": "npm run lint && npm run mocha",
     "mocha": "mocha --require babel-core/register --timeout 600000 --reporter spec --ui qunit test.js"
   },

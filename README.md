@@ -1,4 +1,6 @@
-# tree-to-json [![Build Status](https://travis-ci.org/pustovitDmytro/tree-to-json.svg?branch=master)](https://travis-ci.org/pustovitDmytro/tree-to-json)
+# tree-to-json 
+[![Build Status](https://travis-ci.org/pustovitDmytro/tree-to-json.svg?branch=master)](https://travis-ci.org/pustovitDmytro/tree-to-json)
+[![Coverage Status](https://coveralls.io/repos/github/pustovitDmytro/tree-to-json/badge.svg?branch=master)](https://coveralls.io/github/pustovitDmytro/tree-to-json?branch=master)
 
 **tree-to-json** is a library that provides a powerful tool for converting lists to JSON files.
 

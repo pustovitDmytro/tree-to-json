@@ -2,7 +2,7 @@ require('babel-polyfill');
 const fs = require('fs');
 import { assert } from 'chai';
 const path = require('path');
-const { parseAsync } = require("../lib/index.js");
+const { parseAsync } = require("../src/index.js");
 
 const inputPath = path.resolve(__dirname, 'lists/short.list');
 const outputPath = path.resolve(__dirname, 'tmp/short_.json');

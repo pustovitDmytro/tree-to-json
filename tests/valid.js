@@ -2,7 +2,7 @@ require('babel-polyfill');
 const fs = require('fs');
 import { assert } from 'chai';
 const path = require('path');
-const { parseAsync, parse } = require("../lib/index.js");
+const { parseAsync, parse } = require("../src/index.js");
 
 suite('VALID JSON');
 

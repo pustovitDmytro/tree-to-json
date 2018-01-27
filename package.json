@@ -3,13 +3,21 @@
   "version": "0.0.2",
   "description": "",
   "main": "./lib/index.js",
+  "config": {
+    "MOCHA_OPTS": "--timeout 60000 --reporter spec --ui qunit test.js",
+    "ISPARTA_OPTS": "--report html",
+    "COVERAGE_OPTS": "--statements 85 --functions 85 --branches 85 --lines 85"
+  },
   "scripts": {
     "lint": "eslint src --ext js",
     "lint:fix": "eslint src --ext js --fix",
     "build": "babel src --out-dir lib",
+    "coverage": "cross-env TEST_MODE=1 babel-node -r node_modules/istanbul/lib/cli.js cover $npm_package_config_ISPARTA_OPTS node_modules/.bin/_mocha -- $npm_package_config_MOCHA_OPTS",
+    "coverage-check": "cross-env TEST_MODE=1 node_modules/istanbul/lib/cli.js check-coverage $npm_package_config_COVERAGE_OPTS",
+    "test-coverage": "npm run coverage && npm run coverage-check",
     "prepare": "npm run build",
     "test": "npm run lint && npm run mocha",
-    "mocha": "mocha --require babel-core/register --timeout 600000 --reporter spec --ui qunit test.js"
+    "mocha": "mocha --require babel-core/register $npm_package_config_MOCHA_OPTS"
   },
   "author": "pustovit",
   "license": "ISC",
@@ -21,7 +29,10 @@
     "babel-preset-env": "^1.6.1",
     "babel-preset-node6": "^11.0.0",
     "chai": "^4.1.2",
+    "coveralls": "^3.0.0",
+    "cross-env": "^5.1.3",
     "eslint": "^4.16.0",
+    "istanbul": "^0.4.5",
     "mocha": "^5.0.0",
     "rimraf": "^2.6.2"
   }

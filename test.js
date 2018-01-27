@@ -1,9 +1,8 @@
-const fs = require('fs');
+const fs = require('fs-extra')
 const path = require('path');
-const rimraf = require('rimraf');
 const dir = path.resolve(__dirname, 'tests/tmp');
 
-rimraf.sync(dir);
+fs.removeSync(dir)
 fs.mkdirSync(dir);
 
 require('./tests');

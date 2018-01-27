@@ -16,14 +16,13 @@ module.exports = ({
             const reStucture = /^(\W+)\s/g;
             const reIsLast = /└/g;
             const reHasChild = /┬/g;
-            // const reIsSimple = /─/g;
-
-            // const bundle = {};
             const reModule = /\s*([^\s]+)@([^\s]+)/g;
+
             const [, structure] = reStucture.exec(input) || ['', '┬'];
+
             const isLast = ~structure.search(reIsLast);
-            // const isSimple = ~structure.search(reIsSimple);
             const hasChild = ~structure.search(reHasChild);
+
             const [, moduleName, version] = reModule.exec(input)||['', 'root', ''];
 
             const obj = { id: i, parentId: parent, name: moduleName, children: {}, version, hasChild, isLast };
@@ -49,8 +48,7 @@ module.exports = ({
         });
 
         rl.on('close', () => {
-            rl.output.write(JSON.stringify(tree), done => callback(null, tree));
-            // callback(null, tree);
+            rl.output.write(JSON.stringify(tree), () => callback(null, tree));
         });
     } catch(err){
         callback(err)

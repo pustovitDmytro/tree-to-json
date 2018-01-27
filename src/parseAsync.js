@@ -6,7 +6,6 @@ module.exports = param => {
             if(err !== null) {
                 return reject(err);
             }
-            console.log('resolved')
             return resolve(data);
         });
     });

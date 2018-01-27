@@ -4,7 +4,7 @@
   "description": "",
   "main": "./lib/index.js",
   "config": {
-    "MOCHA_OPTS": "--timeout 60000 --reporter spec --ui qunit test.js",
+    "MOCHA_OPTS": "--timeout 60000 --report lcovonly --ui qunit test.js",
     "ISPARTA_OPTS": "--report html",
     "COVERAGE_OPTS": "--statements 85 --functions 85 --branches 85 --lines 85"
   },
@@ -12,12 +12,12 @@
     "lint": "eslint src --ext js",
     "lint:fix": "eslint src --ext js --fix",
     "build": "babel src --out-dir lib",
-    "report-coverage": "cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js",
+    "coveralls": "npm run coverage -- --report lcovonly && cat ./coverage/lcov.info | coveralls",
     "coverage": "cross-env TEST_MODE=1 babel-node -r node_modules/istanbul/lib/cli.js cover $npm_package_config_ISPARTA_OPTS node_modules/.bin/_mocha -- $npm_package_config_MOCHA_OPTS",
     "coverage-check": "cross-env TEST_MODE=1 node_modules/istanbul/lib/cli.js check-coverage $npm_package_config_COVERAGE_OPTS",
     "test-coverage": "npm run coverage && npm run coverage-check",
     "prepare": "npm run build",
-    "test": "npm run lint && npm run mocha",
+    "test": "npm run lint && npm run mocha && npm run coverage",
     "mocha": "mocha --require babel-core/register $npm_package_config_MOCHA_OPTS"
   },
   "author": "pustovit",
@@ -35,6 +35,7 @@
     "eslint": "^4.16.0",
     "istanbul": "^0.4.5",
     "mocha": "^5.0.0",
+    "mocha-lcov-reporter": "^1.3.0",
     "rimraf": "^2.6.2"
   }
 }

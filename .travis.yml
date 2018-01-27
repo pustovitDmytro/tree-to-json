@@ -4,11 +4,15 @@ node_js:
   - "6"
 before_script:
   - "npm run build"
+after_success:
+  - "npm run coverage"
+  - "npm run report-coverage"
 jobs:
   include:
     - stage: test
       script: "npm run lint"
       script: "npm run mocha"
+      script: "npm run coverage-check"
 notifications:
   email:
     recipients: dipustovit@gmail.com

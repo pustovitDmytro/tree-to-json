@@ -19,3 +19,4 @@ tree-to-json@0.0.1 /mnt/e/work/code/js/tree-to-json
   └─┬ babel-runtime@6.26.0
     ├── core-js@2.5.3 deduped
     └── regenerator-runtime@0.11.1
+

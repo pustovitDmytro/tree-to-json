@@ -5,7 +5,7 @@ const path = require('path');
 const { parseAsync } = require("../src/index.js");
 
 const inputPath = path.resolve(__dirname, 'lists/short.list');
-const outputPath = path.resolve(__dirname, 'tmp/short_.json');
+const outputPath = path.resolve(__dirname, 'tmp/short_children.json');
 const input = fs.createReadStream(inputPath);
 const output = fs.createWriteStream(outputPath);
 

@@ -8,7 +8,7 @@ suite('VALID JSON');
 
 test('Positive: Short File', async () => {
     const inputPath = path.resolve(__dirname, 'lists/short.list');
-    const outputPath = path.resolve(__dirname, 'tmp/short.json');
+    const outputPath = path.resolve(__dirname, 'tmp/short_valid.json');
     const input = fs.createReadStream(inputPath);
     const output = fs.createWriteStream(outputPath);
 
@@ -16,13 +16,19 @@ test('Positive: Short File', async () => {
     require(outputPath);
 });
 
-test('Positive: Short File: nodeback', () => {
-    const inputPath = path.resolve(__dirname, 'lists/short.list');
-    const outputPath = path.resolve(__dirname, 'tmp/short.json');
-    const input = fs.createReadStream(inputPath);
-    const output = fs.createWriteStream(outputPath);
+test('Negative: wrong input parametr', async () => {
+    const promise = parseAsync({ input: 'file' }).then(
+        res => assert.isNull(res, 'result must be empty'),
+        err => assert.isNotNull(err, 'there must be error'),
+    )
+    await promise;
+});
 
-    parse({ input, output }, (err, done) => JSON.parse(JSON.stringify(done)));
+test('Positive: Short File: nodeback with output', () => {
+    const inputPath = path.resolve(__dirname, 'lists/short.list');
+    const input = fs.createReadStream(inputPath);
+
+    parse({ input }, (err, done) => JSON.parse(JSON.stringify(done)));
 });
 
 test('Positive: Long File: Async', async () => {
@@ -32,5 +38,6 @@ test('Positive: Long File: Async', async () => {
     const output = fs.createWriteStream(outputPath);
 
     await parseAsync({ input, output });
+
     require(outputPath);
 });

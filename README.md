@@ -1,10 +1,11 @@
 # tree-to-json 
+**tree-to-json** is a library that provides a powerful tool for converting lists to JSON files.
+
+[![npm](https://img.shields.io/npm/v/tree-to-json.svg?style=flat)](https://www.npmjs.com/package/tree-to-json)
 [![Build Status](https://travis-ci.org/pustovitDmytro/tree-to-json.svg?branch=master)](https://travis-ci.org/pustovitDmytro/tree-to-json)
 [![Coverage Status](https://coveralls.io/repos/github/pustovitDmytro/tree-to-json/badge.svg?branch=master)](https://coveralls.io/github/pustovitDmytro/tree-to-json?branch=master)
 [![Dependency Status](https://beta.gemnasium.com/badges/github.com/pustovitDmytro/tree-to-json.svg)](https://beta.gemnasium.com/projects/github.com/pustovitDmytro/tree-to-json)
 [![GitHub license](https://img.shields.io/github/license/pustovitDmytro/tree-to-json.svg)](https://github.com/pustovitDmytro/tree-to-json)
-
-**tree-to-json** is a library that provides a powerful tool for converting lists to JSON files.
 
 ## Requirements
 node v6
